@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Check, ChevronRight,  Trophy, Clock3, Image as ImageIcon } 
-from "lucide-react";
+import { Check, ChevronRight, Trophy, Clock3, Image as ImageIcon } from "lucide-react";
 
 type GameImage = {
   id: number;
@@ -40,7 +39,7 @@ const INITIAL_IMAGES: GameImage[] = [
   { id: 26, word: "Comprar", emoji: "🛒" },
   { id: 27, word: "Pagar", emoji: "💳" },
   { id: 28, word: "Viajar", emoji: "🧳" },
-  { id: 29, word: "emojigrafiar", emoji: "📸" },
+  { id: 29, word: "Fotografiar", emoji: "📸" },
   { id: 30, word: "Cortar", emoji: "✂️" },
   { id: 31, word: "Construir", emoji: "🏗️" },
   { id: 32, word: "Regar", emoji: "🚿" },
@@ -62,106 +61,6 @@ const INITIAL_IMAGES: GameImage[] = [
   { id: 48, word: "Peinarse", emoji: "💇" },
   { id: 49, word: "Maquillarse", emoji: "💄" },
   { id: 50, word: "Celebrar", emoji: "🥳" },
-  { id: 51, word: "Despertar", emoji: "⏰" },
-  { id: 52, word: "Soñar", emoji: "💭" },
-  { id: 53, word: "Saludar", emoji: "👋" },
-  { id: 54, word: "Aplaudir", emoji: "👏" },
-  { id: 55, word: "Sonreír", emoji: "😊" },
-  { id: 56, word: "Besar", emoji: "😘" },
-  { id: 57, word: "Amar", emoji: "❤️" },
-  { id: 58, word: "Odiar", emoji: "😠" },
-  { id: 59, word: "Temer", emoji: "😨" },
-  { id: 60, word: "Esperar", emoji: "⏳" },
-  { id: 61, word: "Recordar", emoji: "🧠" },
-  { id: 62, word: "Olvidar", emoji: "🤷" },
-  { id: 63, word: "Aprender", emoji: "📚" },
-  { id: 64, word: "Enseñar", emoji: "👩‍🏫" },
-  { id: 65, word: "Preguntar", emoji: "❓" },
-  { id: 66, word: "Responder", emoji: "💬" },
-  { id: 67, word: "Explicar", emoji: "📊" },
-  { id: 68, word: "Discutir", emoji: "🗯️" },
-  { id: 69, word: "Acordar", emoji: "🤝" },
-  { id: 70, word: "Prometer", emoji: "🤞" },
-  { id: 71, word: "Mentir", emoji: "🤥" },
-  { id: 72, word: "Creer", emoji: "🙏" },
-  { id: 73, word: "Dudar", emoji: "🤨" },
-  { id: 74, word: "Decidir", emoji: "⚖️" },
-  { id: 75, word: "Elegir", emoji: "🗳️" },
-  { id: 76, word: "Ganar", emoji: "🏆" },
-  { id: 77, word: "Perder", emoji: "📉" },
-  { id: 78, word: "Competir", emoji: "🏅" },
-  { id: 79, word: "Entrenar", emoji: "🏋️" },
-  { id: 80, word: "Estirar", emoji: "🤸" },
-  { id: 81, word: "Descansar", emoji: "🛋️" },
-  { id: 82, word: "Relajarse", emoji: "🧖" },
-  { id: 83, word: "Respirar", emoji: "🌬️" },
-  { id: 84, word: "Toser", emoji: "🤧" },
-  { id: 85, word: "Estornudar", emoji: "🤒" },
-  { id: 86, word: "Curar", emoji: "🩺" },
-  { id: 87, word: "Operar", emoji: "🏥" },
-  { id: 88, word: "Inyectar", emoji: "💉" },
-  { id: 89, word: "Medir", emoji: "📏" },
-  { id: 90, word: "Pesar", emoji: "⚖️" },
-  { id: 91, word: "Calcular", emoji: "🧮" },
-  { id: 92, word: "Programar", emoji: "💻" },
-  { id: 93, word: "Guardar", emoji: "💾" },
-  { id: 94, word: "Descargar", emoji: "⬇️" },
-  { id: 95, word: "Subir", emoji: "⬆️" },
-  { id: 96, word: "Conectar", emoji: "🔌" },
-  { id: 97, word: "Cargar", emoji: "🔋" },
-  { id: 98, word: "Apagar", emoji: "📴" },
-  { id: 99, word: "Grabar", emoji: "🎥" },
-  { id: 100, word: "Escuchar música", emoji: "🎧" },
-  { id: 101, word: "Tocar", emoji: "🎸" },
-  { id: 102, word: "Actuar", emoji: "🎭" },
-  { id: 103, word: "Dibujar", emoji: "✏️" },
-  { id: 104, word: "Colorear", emoji: "🖍️" },
-  { id: 105, word: "Pegar", emoji: "🩹" },
-  { id: 106, word: "Doblar", emoji: "📄" },
-  { id: 107, word: "Romper", emoji: "💔" },
-  { id: 108, word: "Reparar", emoji: "🔧" },
-  { id: 109, word: "Martillar", emoji: "🔨" },
-  { id: 110, word: "Atornillar", emoji: "🪛" },
-  { id: 111, word: "Pintar pared", emoji: "🖌️" },
-  { id: 112, word: "Barrer", emoji: "🧹" },
-  { id: 113, word: "Trapear", emoji: "🧽" },
-  { id: 114, word: "Lavar", emoji: "🧼" },
-  { id: 115, word: "Secar", emoji: "🧺" },
-  { id: 116, word: "Planchar", emoji: "👔" },
-  { id: 117, word: "Vestirse", emoji: "👗" },
-  { id: 118, word: "Desvestirse", emoji: "👙" },
-  { id: 119, word: "Calzarse", emoji: "👟" },
-  { id: 120, word: "Afeitarse", emoji: "🪒" },
-  { id: 121, word: "Cepillarse", emoji: "🪥" },
-  { id: 122, word: "Oler", emoji: "👃" },
-  { id: 123, word: "Saborear", emoji: "👅" },
-  { id: 124, word: "Masticar", emoji: "🦷" },
-  { id: 125, word: "Tragar", emoji: "🤤" },
-  { id: 126, word: "Brindar", emoji: "🥂" },
-  { id: 127, word: "Hornear", emoji: "🧁" },
-  { id: 128, word: "Freír", emoji: "🍳" },
-  { id: 129, word: "Hervir", emoji: "🍲" },
-  { id: 130, word: "Pelar", emoji: "🍌" },
-  { id: 131, word: "Exprimir", emoji: "🍋" },
-  { id: 132, word: "Mezclar", emoji: "🥣" },
-  { id: 133, word: "Servir", emoji: "🍽️" },
-  { id: 134, word: "Compartir", emoji: "🍕" },
-  { id: 135, word: "Invitar", emoji: "🎟️" },
-  { id: 136, word: "Regalar", emoji: "🎁" },
-  { id: 137, word: "Agradecer", emoji: "🙌" },
-  { id: 138, word: "Disculparse", emoji: "🙇" },
-  { id: 139, word: "Perdonar", emoji: "🕊️" },
-  { id: 140, word: "Ayudar", emoji: "🆘" },
-  { id: 141, word: "Proteger", emoji: "🛡️" },
-  { id: 142, word: "Cuidar", emoji: "🐾" },
-  { id: 143, word: "Pasear", emoji: "🦮" },
-  { id: 144, word: "Montar", emoji: "🐎" },
-  { id: 145, word: "Remar", emoji: "🚣" },
-  { id: 146, word: "Navegar", emoji: "⛵" },
-  { id: 147, word: "Acampar", emoji: "⛺" },
-  { id: 148, word: "Explorar", emoji: "🧭" },
-  { id: 149, word: "Descubrir", emoji: "🗺️" },
-  { id: 150, word: "Imaginar", emoji: "🌌" }
 ];
 
 function formatTime(totalSeconds: number) {
@@ -170,10 +69,16 @@ function formatTime(totalSeconds: number) {
   return `${minutes}:${seconds}`;
 }
 
+function normalizeAnswer(value: string) {
+  return value
+    .trim()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/\s+/g, " ");
+}
+
 export default function JuegoPage() {
-  // Baraja las palabras para que cada partida tenga un orden diferente.
-  // Fisher-Yates garantiza una mezcla uniforme y evita repetir elementos
-  // mientras se recorre la lista.
   const shuffleImages = (items: GameImage[]) => {
     const shuffled = [...items];
     for (let i = shuffled.length - 1; i > 0; i--) {
@@ -190,35 +95,23 @@ export default function JuegoPage() {
   const [remainingSeconds, setRemainingSeconds] = useState(120);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isFinished, setIsFinished] = useState(false);
-  const [showAnswer, setShowAnswer] = useState(false);
-  const [emojiSecondsRemaining, setEmojiSecondsRemaining] = useState(15);
+  const [hintCount, setHintCount] = useState(0);
+  const [answerInput, setAnswerInput] = useState("");
 
-  // Mezcla la lista al cargar el juego.
   useEffect(() => {
     setImages(shuffleImages(INITIAL_IMAGES));
   }, []);
 
-  // Temporizador general de 2 minutos y temporizador individual de 15 segundos.
-  // Al terminar los 15 segundos se revela automáticamente el nombre del emoji.
   useEffect(() => {
     if (!isPlaying || isFinished || remainingSeconds <= 0) return;
 
     const interval = window.setInterval(() => {
       setRemainingSeconds((seconds) => Math.max(0, seconds - 1));
-
-      setEmojiSecondsRemaining((seconds) => {
-        if (seconds <= 1) {
-          setShowAnswer(true);
-          return 0;
-        }
-        return seconds - 1;
-      });
     }, 1000);
 
     return () => window.clearInterval(interval);
   }, [isPlaying, isFinished, remainingSeconds]);
 
-  // Finaliza automáticamente cuando el contador llega a cero.
   useEffect(() => {
     if (remainingSeconds === 0 && !isFinished) {
       setIsPlaying(false);
@@ -236,14 +129,45 @@ export default function JuegoPage() {
     if (wasCorrect) setCorrect((value) => value + 1);
     else setIncorrect((value) => value + 1);
 
-    setShowAnswer(false);
-    setEmojiSecondsRemaining(15);
+    setAnswerInput("");
+    setHintCount(0);
+
     if (currentIndex + 1 >= images.length) {
       setIsPlaying(false);
       setIsFinished(true);
       return;
     }
+
     setCurrentIndex((value) => value + 1);
+  }
+
+  function checkAnswer() {
+    if (!answerInput.trim() || !currentImage || !isPlaying || isFinished) return;
+
+    const userAnswer = normalizeAnswer(answerInput);
+    const correctAnswer = normalizeAnswer(currentImage.word);
+    advance(userAnswer === correctAnswer);
+  }
+
+  function revealHint() {
+    if (!currentImage || !isPlaying || isFinished) return;
+
+    const totalLetters = Array.from(currentImage.word).filter((character) => character !== " ").length;
+    setHintCount((count) => Math.min(count + 1, totalLetters));
+  }
+
+  function getHintDisplay(word: string, lettersToReveal: number) {
+    let revealed = 0;
+
+    return Array.from(word).map((character) => {
+      if (character === " ") return " ";
+      if (revealed < lettersToReveal) {
+        revealed += 1;
+        return character;
+      }
+      revealed += 1;
+      return "_";
+    }).join("");
   }
 
   function stopGame() {
@@ -257,8 +181,8 @@ export default function JuegoPage() {
     setCorrect(0);
     setIncorrect(0);
     setRemainingSeconds(120);
-    setShowAnswer(false);
-    setEmojiSecondsRemaining(15);
+    setHintCount(0);
+    setAnswerInput("");
     setIsFinished(false);
     setIsPlaying(true);
   }
@@ -300,13 +224,12 @@ export default function JuegoPage() {
           </div>
 
           <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-[#ededed]">
-            <div className="flex min-h-[270px] items-center justify-center bg-white sm:min-h-[390px]">
+            <div className="flex min-h-67.5 items-center justify-center bg-white sm:min-h-97.5">
               {currentImage?.imageUrl ? (
-                // Las URLs pueden venir de Dropbox o de Firebase Realtime Database.
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={currentImage.imageUrl} alt="Imagen para adivinar" className="h-full max-h-[390px] w-full object-contain" />
+                <img src={currentImage.imageUrl} alt="Imagen para adivinar" className="h-full max-h-97.5 w-full object-contain" />
               ) : (
-                <div className="flex min-h-[270px] w-full flex-col items-center justify-center gap-3 sm:min-h-[390px]">
+                <div className="flex min-h-67.5 w-full flex-col items-center justify-center gap-3 sm:min-h-97.5">
                   <span className="select-none text-[7rem] leading-none sm:text-[10rem]" role="img" aria-label="Imagen de ejemplo">{currentImage?.emoji ?? "❔"}</span>
                   <span className="text-xs font-medium text-neutral-400">Imagen de ejemplo</span>
                 </div>
@@ -317,15 +240,50 @@ export default function JuegoPage() {
           <div className="py-4 text-center">
             <h2 className="text-2xl font-black sm:text-3xl">¿QUÉ ES?</h2>
             <p className="mt-2 text-sm text-neutral-500">Observa el emoji y adivina la palabra</p>
-            {!showAnswer && !isFinished && (
-              <p className="mt-2 inline-flex rounded-full bg-amber-50 px-3 py-1.5 text-xs font-semibold text-amber-800">
-                La respuesta se mostrará en {emojiSecondsRemaining} {emojiSecondsRemaining === 1 ? "segundo" : "segundos"}
-              </p>
-            )}
-            {showAnswer && currentImage && (
-              <p className="mt-3 inline-flex rounded-full bg-violet-100 px-4 py-2 text-sm font-bold text-violet-800">Respuesta: {currentImage.word}</p>
+              <p>cantidad de letras:</p><p className="text-3xl text-center font-bold text-violet-900">{currentImage?.word.length}</p>
+            
+            {currentImage && hintCount > 0 && !isFinished && (
+              <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3">
+                <p className="text-xs font-bold uppercase tracking-wide text-amber-800">Pista · {hintCount} {hintCount === 1 ? "letra revelada" : "letras reveladas"}</p>
+                <p className="mt-1 text-xl font-black tracking-[0.2em] text-amber-950">{getHintDisplay(currentImage.word, hintCount)}</p>
+              </div>
             )}
           </div>
+
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              checkAnswer();
+            }}
+            className="mb-5 rounded-2xl border border-violet-200 bg-violet-50 p-4"
+          >
+            <label htmlFor="answerInput" className="mb-2 block text-left text-sm font-bold text-violet-900">
+              Escribe tu respuesta
+
+            </label>
+            <div className="flex flex-col gap-2 sm:flex-row">
+              <input
+                id="answerInput"
+                type="text"
+                value={answerInput}
+                onChange={(event) => setAnswerInput(event.target.value)}
+                placeholder="¿Qué representa el emoji?"
+                disabled={!isPlaying || isFinished}
+                autoComplete="off"
+                className="min-h-14 min-w-0 flex-1 rounded-xl border border-neutral-300 bg-white px-4 text-base font-semibold text-neutral-900 outline-none transition placeholder:font-normal placeholder:text-neutral-400 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 disabled:bg-neutral-100"
+              />
+              <button
+                type="submit"
+                disabled={!answerInput.trim() || !isPlaying || isFinished}
+                className="min-h-14 rounded-xl bg-violet-700 px-6 py-3 font-bold text-white transition hover:bg-violet-800 disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                COMPROBAR
+              </button>
+            </div>
+            <p className="mt-2 text-left text-xs text-violet-700">
+              Escribe la palabra y presiona COMPROBAR o la tecla Enter. No importa si usas mayúsculas o tildes.
+            </p>
+          </form>
 
           <div className="mb-4 grid grid-cols-2 gap-3">
             <div className="rounded-2xl bg-[#e1f1e7] px-3 py-4 text-center">
@@ -338,7 +296,7 @@ export default function JuegoPage() {
             </div>
           </div>
 
-          {!isFinished ? (
+          {!isFinished && (
             <>
               <div className="grid grid-cols-2 gap-3">
                 <button type="button" onClick={() => advance(true)} disabled={!isPlaying} className="flex min-h-16 items-center justify-center gap-2 rounded-2xl bg-green-600 px-3 py-4 text-base font-bold text-white shadow-sm transition hover:bg-green-700 disabled:opacity-50 sm:text-xl">
@@ -350,8 +308,13 @@ export default function JuegoPage() {
               </div>
 
               <div className="mt-3 grid grid-cols-2 gap-3">
-                <button type="button" onClick={() => setShowAnswer((value) => !value)} className="rounded-xl border border-violet-200 bg-violet-50 px-3 py-3 text-sm font-semibold text-violet-800 transition hover:bg-violet-100">
-                  {showAnswer ? "Ocultar respuesta" : "Ver respuesta"}
+                <button
+                  type="button"
+                  onClick={revealHint}
+                  disabled={!isPlaying || !currentImage || hintCount >= Array.from(currentImage?.word ?? "").filter((character) => character !== " ").length}
+                  className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-3 text-sm font-semibold text-amber-900 transition hover:bg-amber-100 disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  {currentImage && hintCount >= Array.from(currentImage.word).filter((character) => character !== " ").length ? "Todas las letras reveladas" : "Usar pista (+1 letra)"}
                 </button>
                 <button type="button" onClick={() => setIsPlaying((value) => !value)} className="rounded-xl border border-neutral-200 bg-neutral-100 px-3 py-3 text-sm font-semibold text-neutral-700 transition hover:bg-neutral-200">
                   {isPlaying ? "Pausar tiempo" : "Reanudar tiempo"}
@@ -359,10 +322,10 @@ export default function JuegoPage() {
               </div>
 
               <button type="button" onClick={stopGame} className="mt-3 flex min-h-16 w-full items-center justify-center gap-2 rounded-2xl bg-red-600 px-4 py-4 text-base font-bold text-white shadow-sm transition hover:bg-red-700 sm:text-xl">
-                 DETENER JUEGO
+                DETENER JUEGO
               </button>
             </>
-          ) : null}
+          )}
 
           <p className="mt-5 text-center text-xs text-neutral-400">Partida de 2 minutos · Diseño adaptable a móviles y computadores</p>
         </section>
@@ -373,37 +336,24 @@ export default function JuegoPage() {
             <h2 className="font-bold">Funcionamiento</h2>
           </div>
           <div className="divide-y divide-neutral-100 text-sm">
-            <div className="grid grid-cols-[100px_1fr] gap-3 py-3 sm:grid-cols-[130px_1fr]"><strong>Emoji</strong><span className="text-neutral-600">Se muestra durante 15 segundos; después aparece automáticamente el nombre.</span></div>
+            <div className="grid grid-cols-[100px_1fr] gap-3 py-3 sm:grid-cols-[130px_1fr]"><strong>Pistas</strong><span className="text-neutral-600">Cada vez que solicitas una pista se revela una letra de la palabra.</span></div>
+            <div className="grid grid-cols-[100px_1fr] gap-3 py-3 sm:grid-cols-[130px_1fr]"><strong>Respuesta</strong><span className="text-neutral-600">Escribe la palabra y presiona comprobar. Se aceptan diferencias de mayúsculas y tildes.</span></div>
             <div className="grid grid-cols-[100px_1fr] gap-3 py-3 sm:grid-cols-[130px_1fr]"><strong>Acertó</strong><span className="text-neutral-600">Suma un acierto y muestra la siguiente imagen.</span></div>
-            <div className="grid grid-cols-[100px_1fr] gap-3 py-3 sm:grid-cols-[130px_1fr]"><strong>Siguiente</strong><span className="text-neutral-600">Pasa a otra imagen sin sumar un acierto; cuenta como no acertada.</span></div>
+            <div className="grid grid-cols-[100px_1fr] gap-3 py-3 sm:grid-cols-[130px_1fr]"><strong>Siguiente</strong><span className="text-neutral-600">Pasa a otra imagen y cuenta como no acertada.</span></div>
             <div className="grid grid-cols-[100px_1fr] gap-3 py-3 sm:grid-cols-[130px_1fr]"><strong>Detener</strong><span className="text-neutral-600">Detiene el cronómetro y finaliza la partida.</span></div>
           </div>
         </section>
       </div>
 
       {isFinished && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/65 px-4 py-6 backdrop-blur-sm"
-          role="presentation"
-        >
-          <section
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="game-finished-title"
-            className="w-full max-w-md rounded-3xl border border-violet-200 bg-white p-7 text-center shadow-2xl sm:p-9"
-          >
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/65 px-4 py-6 backdrop-blur-sm" role="presentation">
+          <section role="dialog" aria-modal="true" aria-labelledby="game-finished-title" className="w-full max-w-md rounded-3xl border border-violet-200 bg-white p-7 text-center shadow-2xl sm:p-9">
             <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-violet-100">
               <Trophy className="text-violet-700" size={34} />
             </div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-violet-600">
-              Adivina la palabra
-            </p>
-            <h2 id="game-finished-title" className="mt-2 text-3xl font-black text-neutral-950">
-              ¡Tiempo terminado!
-            </h2>
-            <p className="mt-3 text-sm leading-6 text-neutral-600">
-              La partida ha finalizado. Estos son los resultados del equipo.
-            </p>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-violet-600">Adivina la palabra</p>
+            <h2 id="game-finished-title" className="mt-2 text-3xl font-black text-neutral-950">¡Tiempo terminado!</h2>
+            <p className="mt-3 text-sm leading-6 text-neutral-600">La partida ha finalizado. Estos son los resultados del equipo.</p>
 
             <div className="mt-6 grid grid-cols-2 gap-3">
               <div className="rounded-2xl bg-green-50 p-4">
@@ -416,13 +366,8 @@ export default function JuegoPage() {
               </div>
             </div>
 
-            <button
-              type="button"
-              onClick={restartGame}
-              className="mt-7 flex w-full items-center justify-center gap-2 rounded-xl bg-violet-700 px-5 py-4 text-base font-bold text-white shadow-lg shadow-violet-900/20 transition hover:bg-violet-800 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2"
-            >
-              <ChevronRight size={20} />
-              COMENZAR DE NUEVO
+            <button type="button" onClick={restartGame} className="mt-7 flex w-full items-center justify-center gap-2 rounded-xl bg-violet-700 px-5 py-4 text-base font-bold text-white shadow-lg shadow-violet-900/20 transition hover:bg-violet-800 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2">
+              <ChevronRight size={20} /> COMENZAR DE NUEVO
             </button>
           </section>
         </div>
